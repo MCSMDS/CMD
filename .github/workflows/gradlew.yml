@@ -1,0 +1,31 @@
+name: Gradlew CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download TNoodle
+      run: |
+        git clone https://github.com/thewca/tnoodle.git tnoodle-java && cd tnoodle-java
+        git checkout v0.15.0
+        cd ..
+        git clone https://github.com/thewca/tnoodle-samples.git tnoodle-js && cd tnoodle-js
+    - name: Build Java
+      run: |
+        cd tnoodle-java
+        ./gradlew publishToMavenLocal
+    - name: Build JavaScript
+      run: |
+        cd tnoodle-js
+        ./gradlew check
+        ./gradlew :tnoodlejs-compiler:compileGwt
+    - uses: actions/upload-artifact@v1
+      with:
+       name: TNoodle-JS
+       path: tnoodle-js/tnoodlejs-compiler/build/gwt/out/tnoodlejs
