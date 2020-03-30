@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="Put your description here.">
+    <meta name="theme-color" content="#3367D6"/>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="https://it.mcsmds.tk/assets/styles/bootstrap.css">
+    <link rel="icon" href="/favicon.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="/favicon.jpg">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://it.mcsmds.tk/assets/scripts/jquery.js"></script>
+    <script src="https://it.mcsmds.tk/assets/scripts/bootstrap.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+    </script>
+  </body>
+</html>
